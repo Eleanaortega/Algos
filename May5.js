@@ -1,4 +1,7 @@
 // Daily Algos
+// ALL EXAMPLES OF FREQUENCY COUNTERS
+
+
 
 //Write a function which takes in a string and returns counts of each character in the string
 
@@ -92,7 +95,8 @@ console.log(same([1,2,3],[4,1]));
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Given two strings, write a function to determine if the second string 
-// is an anagram of the first 
+// is an anagram of the first +
+
 
 function anagram(str1, str2){
     if(str1.length !== str2.length){
@@ -118,7 +122,7 @@ function anagram(str1, str2){
             return false
         }
         if(frequencyCounter2[key] !== frequencyCounter1[key]){
-            false
+            return false
         }
     }
     return true
@@ -127,3 +131,26 @@ function anagram(str1, str2){
 
 console.log(anagram("car","rac"))
 
+// Another way to do it //
+
+function validAnagram(str1,str2){
+    if(str1.length !== str2.length){
+        return false
+    }
+
+    const obj = {}
+    for(let i = 0; i < str1.length; i++){
+        let letter= str[i]
+        obj[letter] ? obj[letter] += 1 : obj[letter] = 1;
+    }
+
+    for(let i = 0; i < str2.length; i++){
+        let letter = str[i]
+        if(!obj[letter]){
+            return false
+        }else{
+            obj[letter] -= 1;
+        }
+    }
+    return true
+}
